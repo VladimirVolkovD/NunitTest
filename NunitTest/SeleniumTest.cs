@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using NunitTest.SwagLabs.Test;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
@@ -6,24 +7,27 @@ using OpenQA.Selenium.Support.UI;
 namespace NunitTest
 {
     [TestFixture]
-    internal class SeleniumTest
+    internal class ShareLaneTest : BaseTest
     {
-        WebDriver ChromeDriver { get; set; }
-        int count = 0;
-
-
         [SetUp]
         public void SetUp()
         {
-            ChromeDriver = new ChromeDriver();
-            ChromeDriver.Manage().Window.Maximize();
-            ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
-        }
-
-        [Test]
-        public void MyFirstSeleniumTest()
-        {
             ChromeDriver.Navigate().GoToUrl("https://sharelane.com/");
+        }
+           
+        [Test]
+        public void CheckNotificationMessage()
+        {
+            var expectedMessage = $"Action successful\n×";
+
+            ChromeDriver.FindElement(By.CssSelector(".example a")).Click();
+            var flashElement = ChromeDriver.FindElement(By.Id("flash")); 
+
+            Assert.That(flashElement.Displayed, Is.EqualTo(true));
+            Assert.That(flashElement.Enabled, Is.EqualTo(true));
+            Assert.That(flashElement.Text, Is.EqualTo("Text"));
+
+            ChromeDriver.FindElement(By.XPath("//div[@class='form_group']"));
         }
 
         [Test]
@@ -35,14 +39,11 @@ namespace NunitTest
             checkBox.Click();
             var checkedAttribute = checkBox.GetAttribute("checked");
 
-            SelectElement selectElement = new SelectElement(ChromeDriver.FindElement(By.Id("checkBox")));
-            selectElement.SelectByText("Option 1");
-
             Assert.IsNotNull(checkedAttribute);
             Assert.IsTrue(checkBox.Selected);
 
             checkBox.Click();
-            Assert.IsTrue(checkBox.Selected);
+            Assert.IsFalse(checkBox.Selected);
 
             // var checkBoxes = ChromeDriver.FindElements(By.TagName("input"));
             //List<IWebElement> elements = ChromeDriver.FindElements(By.XPath("//tr")).ToList();
