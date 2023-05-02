@@ -1,21 +1,31 @@
-﻿using NUnit.Framework;
+﻿using Core.Utilities;
+using NUnit.Framework;
 using OpenQA.Selenium;
-using NunitTest.SwagLabs.Page;
 
-namespace NunitTest.SwagLabs.Test
+namespace NunitTest.Test.SwagLabs
 {
     [TestFixture]
     internal class LoginTests : SwagLabsBaseTests
-    {           
+    {
+        [Test]
+        public void EnvVariablesExample ()
+        {
+            Environment.SetEnvironmentVariable("Test1", "Value1");
+            var value = Environment.GetEnvironmentVariable("Test1");
+
+            // Now retrieve it.
+            value = Environment.GetEnvironmentVariable("Browser", EnvironmentVariableTarget.Machine);
+
+        }
 
         [Test, Category("Positive")]
         public void Login_LoginWithCorrect_Credentialst()
         {
-            string username = "standard_user";
-            string password = "secret_sauce";
+            var standartUser = UserBuilder.StandartUser;
+
             string expectedUrl = "https://www.saucedemo.com/inventory.html";
 
-            var inventoryPage = LoginPage.Login(username, password);
+            var inventoryPage = LoginPage.Login(standartUser);
 
             Assert.IsTrue(inventoryPage.CheckCartIconPresented());
             Assert.AreEqual(ChromeDriver.Url, expectedUrl);
@@ -24,11 +34,12 @@ namespace NunitTest.SwagLabs.Test
         [Test, Category("Negative")]
         public void Login_EmptyPasswordNameFieldTest_CheckErrorMessage()
         {
-            string username = "standard_user";
             string errorMessage = "Epic sadface: Password is required";
 
-            LoginPage.TryToLogin(username);
-            
+            var user = UserBuilder.GetRandomUser();
+
+            LoginPage.TryToLogin(user);
+
             var error = ChromeDriver.FindElement(By.XPath("//*[@data-test='error']"));
 
             Assert.Multiple(() =>
@@ -38,15 +49,23 @@ namespace NunitTest.SwagLabs.Test
             });
         }
 
-        [Test, Category("Negative")]        
+        [Test, Category("Negative")]
         public void Login_EmptyUserNameFieldTest_CheckErrorMessage()
         {
-            string password = "standard_user";
             string errorMessage = "Epic sadface: Username is required";
 
-            LoginPage.TryToLogin(password: password);
 
-            var error = ChromeDriver.FindElement(By.XPath(" //*[@data-test='error']"));
+            var user =  new User 
+            { 
+                Password = "123", 
+                Name = "", 
+            };
+
+            user.Name = "123123132";
+
+            LoginPage.TryToLogin(user);
+
+            var error = ChromeDriver.FindElement(By.XPath("//*[@data-test='error']"));
 
             Assert.Multiple(() =>
             {

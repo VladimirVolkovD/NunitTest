@@ -1,10 +1,10 @@
 ﻿using NUnit.Framework;
-using NunitTest.SwagLabs.Test;
+using NunitTest.Test.SwagLabs;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium.Support.UI;
 
-namespace NunitTest
+namespace NunitTest.Test.ShareLane
 {
     [TestFixture]
     internal class ShareLaneTest : BaseTest
@@ -14,14 +14,14 @@ namespace NunitTest
         {
             ChromeDriver.Navigate().GoToUrl("https://sharelane.com/");
         }
-           
+
         [Test]
         public void CheckNotificationMessage()
         {
             var expectedMessage = $"Action successful\n×";
 
             ChromeDriver.FindElement(By.CssSelector(".example a")).Click();
-            var flashElement = ChromeDriver.FindElement(By.Id("flash")); 
+            var flashElement = ChromeDriver.FindElement(By.Id("flash"));
 
             Assert.That(flashElement.Displayed, Is.EqualTo(true));
             Assert.That(flashElement.Enabled, Is.EqualTo(true));

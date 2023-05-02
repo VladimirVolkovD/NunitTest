@@ -1,6 +1,6 @@
 ﻿using OpenQA.Selenium;
 
-namespace NunitTest.SwagLabs.Page
+namespace NunitTest.Page
 {
     internal abstract class BasePage
     {

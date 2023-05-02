@@ -7,7 +7,7 @@ using System.Text;
 using System.Threading.Tasks;
 using NUnit.Framework;
 
-namespace NunitTest.SwagLabs.Page
+namespace NunitTest.Page
 {
     internal class InventoryPage : BasePage
     {

@@ -21,4 +21,23 @@
     <PackageReference Include="Selenium.WebDriver.ChromeDriver" Version="112.0.5615.4900" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Core\Core.csproj" />
+
+	  <None Include="appsettings.$(Configuration).json">
+		  <Link>appsettings.custom.json</Link>
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+
+	  <None Update="appsettings.Release.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>
+	  <None Update="DataFile.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+	  </None>
+	  <None Update="mainconfig.json">
+	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+	  </None>	  
+  </ItemGroup>
+
 </Project>

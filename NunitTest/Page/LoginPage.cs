@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using Core.Utilities;
+using OpenQA.Selenium;
 using OpenQA.Selenium.Chrome;
 using System;
 using System.Collections.Generic;
@@ -6,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace NunitTest.SwagLabs.Page
+namespace NunitTest.Page
 {
     internal class LoginPage : BasePage
     {
@@ -14,7 +15,7 @@ namespace NunitTest.SwagLabs.Page
         By PassrowdInputLocator = By.CssSelector("#password");
         By LoginButtonLocator = By.Name("login-button");
 
-        public LoginPage(WebDriver driver): base(driver) { }      
+        public LoginPage(WebDriver driver) : base(driver) { }
 
         void SetUserName(string name)
         {
@@ -31,16 +32,16 @@ namespace NunitTest.SwagLabs.Page
             ChromeDriver.FindElement(LoginButtonLocator).Click();
         }
 
-        public void TryToLogin(string name = "", string password = "")
+        public void TryToLogin(User user)
         {
-            SetUserName(name);
-            SetPasswrod(password);
+            SetUserName(user.Name);
+            SetPasswrod(user.Password);
             ClickLoginButton();
         }
 
-        public InventoryPage Login(string name = "", string password = "") 
+        public InventoryPage Login(User user)
         {
-            TryToLogin(name, password);
+            TryToLogin(user);
             return new InventoryPage(ChromeDriver);
         }
     }

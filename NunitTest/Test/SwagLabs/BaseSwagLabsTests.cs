@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace NunitTest.SwagLabs.Test
+namespace NunitTest.Test.SwagLabs
 {
     internal class SwagLabsBaseTests : BaseTest
     {
