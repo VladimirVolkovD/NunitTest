@@ -81,7 +81,34 @@ namespace Core.Selenium
         {
             driver.SwitchTo().Alert().Accept();
         }
-       
+
+        public object ExecuteScript(string script)
+        {
+            try
+            {
+                return ((IJavaScriptExecutor)driver).ExecuteScript(script);
+
+            }catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public void SwitchToFirstWindow()
+        {
+            driver.SwitchTo().Window(driver.WindowHandles[0]);
+        }
+
+        public void SwitchToLastWindow()
+        {
+            var windows = driver.WindowHandles;
+
+            if(windows.Count > 1)
+            {
+                driver.SwitchTo().Window(windows[windows.Count - 1]);
+            }          
+        }
+
         public void CloseTab()
         {
             driver.Close();
