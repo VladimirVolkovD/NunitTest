@@ -13,7 +13,7 @@ namespace NunitTest.Page
     {
         By CartIconLocator = By.ClassName("shopping_cart_link");
 
-        public InventoryPage(WebDriver driver) : base(driver)
+        public InventoryPage( ) : base()
         {
             Assert.IsTrue(CheckCartIconPresented());
         }

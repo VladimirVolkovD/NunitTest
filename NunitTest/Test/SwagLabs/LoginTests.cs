@@ -1,4 +1,5 @@
-﻿using Core.Utilities;
+﻿using Core.Selenium;
+using Core.Utilities;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
@@ -28,7 +29,7 @@ namespace NunitTest.Test.SwagLabs
             var inventoryPage = LoginPage.Login(standartUser);
 
             Assert.IsTrue(inventoryPage.CheckCartIconPresented());
-            Assert.AreEqual(ChromeDriver.Url, expectedUrl);
+            Assert.AreEqual(Browser.Instance.Driver.Url, expectedUrl);
         }
 
         [Test, Category("Negative")]
@@ -40,7 +41,7 @@ namespace NunitTest.Test.SwagLabs
 
             LoginPage.TryToLogin(user);
 
-            var error = ChromeDriver.FindElement(By.XPath("//*[@data-test='error']"));
+            var error = Browser.Instance.Driver.FindElement(By.XPath("//*[@data-test='error']"));
 
             Assert.Multiple(() =>
             {
@@ -65,7 +66,7 @@ namespace NunitTest.Test.SwagLabs
 
             LoginPage.TryToLogin(user);
 
-            var error = ChromeDriver.FindElement(By.XPath("//*[@data-test='error']"));
+            var error = Browser.Instance.Driver.FindElement(By.XPath("//*[@data-test='error']"));
 
             Assert.Multiple(() =>
             {

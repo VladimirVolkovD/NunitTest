@@ -15,7 +15,7 @@ namespace NunitTest.Page
         By PassrowdInputLocator = By.CssSelector("#password");
         By LoginButtonLocator = By.Name("login-button");
 
-        public LoginPage(WebDriver driver) : base(driver) { }
+        public LoginPage( ) : base() { }
 
         void SetUserName(string name)
         {
@@ -42,7 +42,7 @@ namespace NunitTest.Page
         public InventoryPage Login(User user)
         {
             TryToLogin(user);
-            return new InventoryPage(ChromeDriver);
+            return new InventoryPage();
         }
     }
 }

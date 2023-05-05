@@ -1,4 +1,4 @@
-﻿namespace Core.Configuration
+﻿namespace Core.Configurations
 {
     internal interface IConfiguration
     {

@@ -1,14 +1,15 @@
-﻿using OpenQA.Selenium;
+﻿using Core.Selenium;
+using OpenQA.Selenium;
 
 namespace NunitTest.Page
 {
     internal abstract class BasePage
     {
-        protected WebDriver ChromeDriver { get; set; }
+        protected IWebDriver ChromeDriver { get; set; }
 
-        public BasePage(WebDriver driver)
+        public BasePage()
         {
-            ChromeDriver = driver;
+            ChromeDriver = Browser.Instance.Driver;
         }
     }
 }
