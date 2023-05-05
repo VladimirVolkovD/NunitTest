@@ -22,7 +22,6 @@ namespace NunitTest.Test.SwagLabs
         public void Login_LoginWithCorrect_Credentialst()
         {
             var standartUser = UserBuilder.StandartUser;
-
             string expectedUrl = "https://www.saucedemo.com/inventory.html";
 
             var inventoryPage = LoginPage.Login(standartUser);
@@ -35,17 +34,14 @@ namespace NunitTest.Test.SwagLabs
         public void Login_EmptyPasswordNameFieldTest_CheckErrorMessage()
         {
             string errorMessage = "Epic sadface: Password is required";
-
             var user = UserBuilder.GetRandomUser();
 
             LoginPage.TryToLogin(user);
-
-            var error = ChromeDriver.FindElement(By.XPath("//*[@data-test='error']"));
+            var errorText = LoginPage.GetErrorMessage();
 
             Assert.Multiple(() =>
             {
-                Assert.AreEqual(error.Text, errorMessage);
-                Assert.IsTrue(error.Displayed);
+                Assert.AreEqual(errorText, errorMessage);
             });
         }
 

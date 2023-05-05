@@ -28,9 +28,6 @@ namespace NunitTest.Test.SwagLabs
                     break;
             }
 
-
-            string t = Configuration.Browser.TypeBrowser;
-
             ChromeDriver.Manage().Window.Maximize();
             ChromeDriver.Manage().Timeouts().ImplicitWait = TimeSpan.FromSeconds(5);
             LoginPage = new LoginPage(ChromeDriver);

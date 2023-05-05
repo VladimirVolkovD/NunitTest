@@ -1,5 +1,4 @@
-﻿
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 
 namespace Core.Configuration
 {
@@ -45,7 +44,7 @@ namespace Core.Configuration
 
              new ConfigurationBuilder()
             .SetBasePath(CurrentDirectory)
-                .AddJsonFile("mainconfig.json", true, true)
+                .AddJsonFile("appsettings.json", true, true)
                 .AddJsonFile("appsettings.custom.json", true, true)
                 .Build();
 

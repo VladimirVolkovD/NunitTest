@@ -1,8 +1,6 @@
 ﻿using NUnit.Framework;
 using NunitTest.Test.SwagLabs;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using OpenQA.Selenium.Support.UI;
 
 namespace NunitTest.Test.ShareLane
 {

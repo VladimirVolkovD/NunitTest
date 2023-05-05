@@ -1,11 +1,5 @@
-﻿using Core.Utilities;
+﻿using Core.Models;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Chrome;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace NunitTest.Page
 {
@@ -14,12 +8,18 @@ namespace NunitTest.Page
         By UserNameInputLocator = By.XPath("//*[@data-test='username']");
         By PassrowdInputLocator = By.CssSelector("#password");
         By LoginButtonLocator = By.Name("login-button");
+        By ErrorElement = By.XPath("//*[@data-test='error']");
 
         public LoginPage(WebDriver driver) : base(driver) { }
 
         void SetUserName(string name)
         {
             ChromeDriver.FindElement(UserNameInputLocator).SendKeys(name);
+        }
+
+        public string GetErrorMessage()
+        {
+            return ChromeDriver.FindElement(ErrorElement).Text;
         }
 
         void SetPasswrod(string password)
