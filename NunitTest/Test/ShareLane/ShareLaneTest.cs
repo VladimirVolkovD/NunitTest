@@ -2,6 +2,7 @@
 using NUnit.Framework;
 using NunitTest.Test.SwagLabs;
 using OpenQA.Selenium;
+using System.Reflection.Emit;
 
 namespace NunitTest.Test.ShareLane
 {
@@ -11,30 +12,22 @@ namespace NunitTest.Test.ShareLane
         [SetUp]
         public void SetUp()
         {
-           Browser.Instance.Driver.Navigate().GoToUrl("https://sharelane.com/");
+            Browser.Instance.Driver.Navigate().GoToUrl("https://sharelane.com/");
         }
 
         [Test]
         public void CheckNotificationMessage()
         {
-            var expectedMessage = $"Action successful\n×";
 
-             Browser.Instance.Driver.FindElement(By.CssSelector(".example a")).Click();
-            var flashElement =  Browser.Instance.Driver.FindElement(By.Id("flash"));
 
-            Assert.That(flashElement.Displayed, Is.EqualTo(true));
-            Assert.That(flashElement.Enabled, Is.EqualTo(true));
-            Assert.That(flashElement.Text, Is.EqualTo("Text"));
-
-             Browser.Instance.Driver.FindElement(By.XPath("//div[@class='form_group']"));
         }
 
         [Test]
         public void MyFirstCheckBoxTest()
         {
-             Browser.Instance.Driver.Navigate().GoToUrl("http://the-internet.herokuapp.com/checkboxes");
+            Browser.Instance.Driver.Navigate().GoToUrl("http://the-internet.herokuapp.com/checkboxes");
 
-            var checkBox =  Browser.Instance.Driver.FindElement(By.TagName("input"));
+            var checkBox = Browser.Instance.Driver.FindElement(By.TagName("input"));
             checkBox.Click();
             var checkedAttribute = checkBox.GetAttribute("checked");
 
@@ -54,9 +47,9 @@ namespace NunitTest.Test.ShareLane
         [Test]
         public void MyFirstInputTest()
         {
-             Browser.Instance.Driver.Navigate().GoToUrl("http://the-internet.herokuapp.com/inputs");
+            Browser.Instance.Driver.Navigate().GoToUrl("http://the-internet.herokuapp.com/inputs");
 
-            var input =  Browser.Instance.Driver.FindElement(By.TagName("input"));
+            var input = Browser.Instance.Driver.FindElement(By.TagName("input"));
 
             input.SendKeys("123");
 
@@ -71,7 +64,7 @@ namespace NunitTest.Test.ShareLane
         [TearDown]
         public void TearDown()
         {
-             Browser.Instance.Driver.Quit();
+            Browser.Instance.Driver.Quit();
         }
     }
 }

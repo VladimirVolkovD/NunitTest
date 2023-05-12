@@ -24,6 +24,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\BussinesObjects\BussinesObjects.csproj" />
 		<ProjectReference Include="..\Core\Core.csproj" />
 
 		<None Include="appsettings.$(Configuration).json">

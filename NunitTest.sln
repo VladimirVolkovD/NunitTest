@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NunitTest", "NunitTest\Nuni
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Core", "Core\Core.csproj", "{C053ED84-B9DC-416D-A428-9A0CE42175F4}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BussinesObjects", "BussinesObjects\BussinesObjects.csproj", "{0A845F92-AC87-4472-9E7B-9BD4E0CF02FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -26,6 +28,12 @@ Global
 		{C053ED84-B9DC-416D-A428-9A0CE42175F4}.FIreFox|Any CPU.Build.0 = Debug|Any CPU
 		{C053ED84-B9DC-416D-A428-9A0CE42175F4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C053ED84-B9DC-416D-A428-9A0CE42175F4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0A845F92-AC87-4472-9E7B-9BD4E0CF02FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A845F92-AC87-4472-9E7B-9BD4E0CF02FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0A845F92-AC87-4472-9E7B-9BD4E0CF02FF}.FIreFox|Any CPU.ActiveCfg = Debug|Any CPU
+		{0A845F92-AC87-4472-9E7B-9BD4E0CF02FF}.FIreFox|Any CPU.Build.0 = Debug|Any CPU
+		{0A845F92-AC87-4472-9E7B-9BD4E0CF02FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0A845F92-AC87-4472-9E7B-9BD4E0CF02FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

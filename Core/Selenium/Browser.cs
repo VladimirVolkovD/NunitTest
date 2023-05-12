@@ -88,7 +88,8 @@ namespace Core.Selenium
             {
                 return ((IJavaScriptExecutor)driver).ExecuteScript(script);
 
-            }catch (Exception)
+            }
+            catch (Exception)
             {
                 return null;
             }
@@ -103,10 +104,10 @@ namespace Core.Selenium
         {
             var windows = driver.WindowHandles;
 
-            if(windows.Count > 1)
+            if (windows.Count > 1)
             {
                 driver.SwitchTo().Window(windows[windows.Count - 1]);
-            }          
+            }
         }
 
         public void CloseTab()
