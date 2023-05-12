@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Core.Selenium;
+using NUnit.Framework;
 
 namespace NunitTest.Test.SwagLabs
 {
@@ -7,7 +8,7 @@ namespace NunitTest.Test.SwagLabs
         [SetUp]
         public void SetUp()
         {
-            ChromeDriver.Navigate().GoToUrl("https://www.saucedemo.com/");
+            Browser.Instance.Driver.Navigate().GoToUrl("https://www.saucedemo.com/");
         }
     }
 }

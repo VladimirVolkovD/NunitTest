@@ -1,6 +1,6 @@
-﻿using Core.Utilities;
+﻿using Core.Models;
+using Core.Utilities;
 using NUnit.Framework;
-using OpenQA.Selenium;
 
 namespace NunitTest.Test.SwagLabs
 {
@@ -8,7 +8,7 @@ namespace NunitTest.Test.SwagLabs
     internal class LoginTests : SwagLabsBaseTests
     {
         [Test]
-        public void EnvVariablesExample ()
+        public void EnvVariablesExample()
         {
             Environment.SetEnvironmentVariable("Test1", "Value1");
             var value = Environment.GetEnvironmentVariable("Test1");
@@ -27,7 +27,7 @@ namespace NunitTest.Test.SwagLabs
             var inventoryPage = LoginPage.Login(standartUser);
 
             Assert.IsTrue(inventoryPage.CheckCartIconPresented());
-            Assert.AreEqual(ChromeDriver.Url, expectedUrl);
+            Assert.AreEqual(Driver.Url, expectedUrl);
         }
 
         [Test, Category("Negative")]
@@ -50,23 +50,18 @@ namespace NunitTest.Test.SwagLabs
         {
             string errorMessage = "Epic sadface: Username is required";
 
-
-            var user =  new User 
-            { 
-                Password = "123", 
-                Name = "", 
+            var user = new User
+            {
+                Password = "123",
+                Name = "",
             };
 
-            user.Name = "123123132";
-
             LoginPage.TryToLogin(user);
-
-            var error = ChromeDriver.FindElement(By.XPath("//*[@data-test='error']"));
+            var errorText = LoginPage.GetErrorMessage();
 
             Assert.Multiple(() =>
             {
-                Assert.AreEqual(error.Text, errorMessage);
-                Assert.IsTrue(error.Displayed);
+                Assert.AreEqual(errorText, errorMessage);
             });
         }
     }

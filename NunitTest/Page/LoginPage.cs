@@ -10,7 +10,7 @@ namespace NunitTest.Page
         By LoginButtonLocator = By.Name("login-button");
         By ErrorElement = By.XPath("//*[@data-test='error']");
 
-        public LoginPage(WebDriver driver) : base(driver) { }
+        public LoginPage(IWebDriver driver) : base(driver) { }
 
         void SetUserName(string name)
         {

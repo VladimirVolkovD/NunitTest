@@ -4,9 +4,9 @@ namespace NunitTest.Page
 {
     internal abstract class BasePage
     {
-        protected WebDriver ChromeDriver { get; set; }
+        protected IWebDriver ChromeDriver { get; set; }
 
-        public BasePage(WebDriver driver)
+        public BasePage(IWebDriver driver)
         {
             ChromeDriver = driver;
         }
