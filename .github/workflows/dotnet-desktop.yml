@@ -53,10 +53,6 @@ on:
         required: true
         type: string
         default: ''
-      runName:
-        required: true
-        type: string
-        default: ''
 
 jobs:
 
