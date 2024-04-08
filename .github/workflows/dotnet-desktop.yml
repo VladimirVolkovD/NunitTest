@@ -45,14 +45,15 @@ on:
     branches: [ "main" ]
   workflow_dispatch:
     inputs:
-      testExecKey:
-        required: true
-        type: string
-        default: ''
       projectKey:
         required: true
         type: string
         default: ''
+      testExecKey:
+        required: true
+        type: string
+        default: ''
+  
 
 jobs:
 
