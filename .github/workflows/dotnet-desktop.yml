@@ -48,11 +48,11 @@ on:
       projectKey:
         required: true
         type: string
-        default: ''
+        default: ' '
       testExecKey:
         required: true
         type: string
-        default: ''
+        default: ' '
   
 
 jobs:
