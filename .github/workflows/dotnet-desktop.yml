@@ -44,6 +44,19 @@ on:
   pull_request:
     branches: [ "main" ]
   workflow_dispatch:
+    inputs:
+      testExecKey:
+        required: true
+        type: string
+        default: ''
+      projectKey:
+        required: true
+        type: string
+        default: ''
+      runName:
+        required: true
+        type: string
+        default: ''
 
 jobs:
 
